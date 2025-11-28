@@ -1,24 +1,28 @@
-import { useState } from "react";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import "./App.css";
-import Login from "./pages/LogInPage";
-import Signup from "./pages/SignUpPage";
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Login from "./pages/Login.jsx";
+import Feed from "./pages/Feed";
+import Profile from "./pages/Profile";
+import Connections from "./pages/Connections";
+import Discover from "./pages/Discover";
+import CreatePost from "./pages/CreatePost";
+import SignUp from "./pages/SignUp.jsx";
 
-function App() {
-  //toplvl component
-
-  const [view, setView] = useState("login"); //default view
-
+const App = () => {
   return (
-    <div className="App">
-      {view === "login" ? (
-        <Login onSwitch={() => setView("signup")} />
-      ) : (
-        <Signup onSwitch={() => setView("login")} />
-      )}
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/feed" replace />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/connections" element={<Connections />} />
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/create-post" element={<CreatePost />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
