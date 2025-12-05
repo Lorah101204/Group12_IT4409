@@ -1,7 +1,10 @@
 import React from "react";
+import Layout from "../components/layout/Layout";
 
-const Connections = () => {
-  return <div>Connections</div>;
-};
-
-export default Connections;
+export default function Connections() {
+  return (
+    <Layout>
+      <div>Connections Page</div>
+    </Layout>
+  );
+}

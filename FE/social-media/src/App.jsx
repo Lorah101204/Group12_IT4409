@@ -5,7 +5,7 @@ import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Connections from "./pages/Connections";
 import Discover from "./pages/Discover";
-import CreatePost from "./pages/CreatePost";
+import CreatePostPage from "./pages/CreatePostPage";
 import SignUp from "./pages/SignUp.jsx";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/connections" element={<Connections />} />
         <Route path="/discover" element={<Discover />} />
-        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/create-post" element={<CreatePostPage />} />
       </Routes>
     </>
   );

@@ -9,7 +9,7 @@ const PostCard = ({ post }) => {
         <div className="flex items-center gap-3">
           <Avatar size="md" />
           <div>
-            <h3 className="font-semibold">{post.name}</h3>
+            <h3 className="font-semibold">{post.user.name}</h3>
             <p className="text-sm text-gray-500">{post.time}</p>
           </div>
         </div>
@@ -18,20 +18,20 @@ const PostCard = ({ post }) => {
         </p>
       </div>
 
-      {post.image && (
-        <img src={post.image} alt="post" className="w-full object-cover" />
+      {post.img && (
+        <img src={post.img} alt="post" className="w-full object-cover" />
       )}
 
       <div className="p-4 border-t border-gray-300">
         <div className="flex items-center justify-around text-gray-600">
           <button className="flex items-center gap-2 hover:text-red-500 transition">
-            <FiHeart size={20} /> <span>0</span>
+            <FiHeart size={20} /> <span>{post.likes.length}</span>
           </button>
           <button className="flex items-center gap-2 hover:text-blue-500 transition">
-            <FiMessageCircle size={20} /> <span>0</span>
+            <FiMessageCircle size={20} /> <span>{post.comments.length}</span>
           </button>
           <button className="flex items-center gap-2 hover:text-green-500 transition">
-            <FiShare2 size={20} /> <span>Chia sẻ</span>
+            <FiShare2 size={20} /> <span>{post.shares.length}</span>
           </button>
         </div>
       </div>

@@ -46,19 +46,19 @@ export default function ProfileHeader({ user }) {
           <div className="flex justify-center sm:justify-start gap-8 mt-6 text-center border-t border-neutral-400 pt-4">
             <div>
               <span className="text-2xl font-bold text-gray-900">
-                {user.posts}
+                {user.posts ? user.posts.length : 0}
               </span>
               <p className="text-gray-500">Post</p>
             </div>
             <div>
               <span className="text-2xl font-bold text-gray-900">
-                {user.followers}
+                {user.followers ? user.followers.length : 0}
               </span>
               <p className="text-gray-500">Followers</p>
             </div>
             <div>
               <span className="text-2xl font-bold text-gray-900">
-                {user.following}
+                {user.following ? user.following.length : 0}
               </span>
               <p className="text-gray-500">Following</p>
             </div>
