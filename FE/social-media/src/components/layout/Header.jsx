@@ -12,15 +12,6 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4 mr-2">
-          <div className="flex  items-center bg-gray-100 rounded-full px-4 py-2">
-            <FiSearch className="text-gray-500" />
-            <input
-              type="text"
-              placeholder="Tìm kiếm..."
-              className="bg-transparent outline-none ml-2 text-sm"
-            />
-          </div>
-
           <div className="flex items-center gap-2">
             <Avatar src={ava} size="sm" />
             <span className="font-medium hidden sm:block">Hùng Phan</span>

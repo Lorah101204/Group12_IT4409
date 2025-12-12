@@ -5,7 +5,8 @@ export default function Avatar({ src = avatar, size = "md", className = "" }) {
     sm: "w-8 h-8",
     md: "w-12 h-12",
     lg: "w-16 h-16",
-    xl: "w-30 h-30",
+    xl: "w-32 h-32",
+    "2xl": "w-36 h-36",
   }[size];
 
   return (

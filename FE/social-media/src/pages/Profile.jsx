@@ -1,28 +1,53 @@
 // src/pages/ProfilePage.jsx
 import Layout from "../components/layout/Layout";
-import ProfileHeader from "../components/profile/ProfileHeader";
-import FeedList from "../components/feed/FeedList";
-import { userData1 } from "../assets/fake-data/data";
+import UserProfileInfo from "../components/UserProfileInfo";
+import { userData1, userData2, userData3 } from "../assets/fake-data/data";
+import { postsData } from "../assets/fake-data/data";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
+import PostCard from "../components/feed/PostCard";
 
 export default function Profile() {
-  const user = userData1;
+  const { profileId } = useParams();
+  const [user, setUser] = useState(null);
+  const [userPosts, setUserPosts] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
+
+  const fetchUser = async () => {
+    setUser(userData1);
+    setUserPosts(postsData.filter((post) => post.user.id === userData1.id));
+  };
+  // Simulate async data fetching with a delay
+  const simulateFetch = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await fetchUser();
+  };
+  useEffect(() => {
+    simulateFetch();
+  }, [profileId]);
   return (
     <Layout>
-      <div className="max-w-8xl mx-auto  px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
-          <div className="lg:col-span-8">
-            <ProfileHeader user={user} />
-
-            {/* User posts */}
-            <div className="mt-6">
-              <FeedList />
-            </div>
+      {user ? (
+        <div className="max-w-5xl mx-auto px-4 py-6">
+          <UserProfileInfo
+            user={user}
+            profileId={profileId}
+            setShowEdit={setShowEdit}
+          />
+          <div className="mt-6">
+            {userPosts.length === 0 ? (
+              <div className="bg-white rounded-xl p-6 border border-gray-200 text-gray-500">
+                Người dùng chưa có bài viết nào.
+              </div>
+            ) : (
+              userPosts.map((post, i) => <PostCard key={i} post={post} />)
+            )}
           </div>
-
-          {/* Right column left as empty space to match design proportions */}
-          <div className="hidden lg:block lg:col-span-4"></div>
         </div>
-      </div>
+      ) : (
+        <Loading />
+      )}
     </Layout>
   );
 }
