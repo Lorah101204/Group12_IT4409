@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import PostCard from "../components/feed/PostCard";
+import ProfileModal from "../components/ProfileModal";
 
 export default function Profile() {
   const { profileId } = useParams();
@@ -44,6 +45,8 @@ export default function Profile() {
               userPosts.map((post, i) => <PostCard key={i} post={post} />)
             )}
           </div>
+
+          {showEdit && <ProfileModal setShowEdit={setShowEdit} />}
         </div>
       ) : (
         <Loading />

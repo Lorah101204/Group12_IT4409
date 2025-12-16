@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { userData1 } from "../assets/fake-data/data";
 import { LuUser, LuUserCheck, LuUserPlus, LuUserPen } from "react-icons/lu";
@@ -15,7 +15,7 @@ const Connections = () => {
   //fake fetch data
   const [loading, setLoading] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     // Simulate API call delay
     const timer = setTimeout(() => {
